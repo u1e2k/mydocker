@@ -1,1 +1,1 @@
-FROM opensuse
+FROM opensuse/tumbleweed:latest
