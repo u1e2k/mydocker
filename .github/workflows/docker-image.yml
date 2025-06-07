@@ -15,4 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s) --tag my-image-name:latest
+
+    - name: Run Hyprland Config Test
+      run: |
+        docker run --rm my-image-name:latest
+
+# このコマンドは、設定ファイルに問題があれば非ゼロの終了コードを返すように設計されています
+# docker run コマンドが非ゼロ終了コードを返した場合、ステップは失敗とみなされる
+# したがって、hyprctl reload が失敗した場合、このジョブ全体が失敗する

@@ -1,3 +1,3 @@
 #! /bin/bash
 
-docker images && docker ps -a
+docker volume ls && docker images && docker ps -a
